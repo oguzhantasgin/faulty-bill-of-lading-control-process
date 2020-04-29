@@ -1,0 +1,183 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Add_Bills_to_Queue" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_CompleteBillsDT" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_OrchestratorQueueName" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>390,544</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Add_Bills_to_Queue_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Add Bills to Queue" sap:VirtualizedContainerService.HintSize="349,354" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[in_CompleteBillsDT]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="307,262" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="bill" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Bills to Queue" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Bill Item to Queue" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[in_OrchestratorQueueName]" Reference="[bill(&quot;Invoice Number&quot;).ToString]">
+              <ui:AddQueueItem.ItemInformation>
+                <InArgument x:TypeArguments="x:String" x:Key="Company Name">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Company Name&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Company Address">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Company Address&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Pickup From">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Pickup From&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Pickup">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Pickup&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Delivery">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Delivery&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="InvoiceNumber">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Invoice Number&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Mode">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Mode&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Carrier">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Carrier&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="PO Number">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;PO Number&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Tracking Number">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Tracking Number&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="PRO Number">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;PRO Number&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Deliver To">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Deliver To&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Bill To">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Bill To&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Notes">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Notes&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Freight Change Terms">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Freight Change Terms&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Pieces">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Pieces&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Quantity">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Quantity&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Package">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Package&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="PO">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;PO&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Dimensions">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Dimensions&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Item/Description">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Item Description&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Weight">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Weight&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Volume">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Volume&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Volume/Weight">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Volume/Weight&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="HM">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;HM&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="NM FC Number">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;NM-FC Number&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Class">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Class&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Pickup Instructions">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Pickup Instructions&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Delivery Instructions">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Delivery Instructions&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="COD Amount">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;COD Amount&quot;).ToString" />
+                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="Fee Terms">
+                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="bill(&quot;Fee Terms&quot;).ToString" />
+                </InArgument>
+              </ui:AddQueueItem.ItemInformation>
+            </ui:AddQueueItem>
+          </Sequence>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+    </ui:ForEachRow>
+  </Sequence>
+</Activity>
