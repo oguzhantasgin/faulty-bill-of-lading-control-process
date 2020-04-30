@@ -9,7 +9,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1067,862</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1255,822</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -77,7 +77,7 @@
         <OutArgument x:TypeArguments="ui:DatabaseConnection" x:Key="out_DBConnection">[in_DBConnection]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Get Bill from Invoice Number" sap:VirtualizedContainerService.HintSize="379,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Bill Of Lading - Database Operations/Get Bill from Invoice Number.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Get Bill by Invoice Number" sap:VirtualizedContainerService.HintSize="379,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Bill Of Lading - Database Operations/Get Bill by Invoice Number.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[in_TransactionItem.SpecificContent("InvoiceNumber").ToString]</InArgument>
         <InArgument x:TypeArguments="ui:DatabaseConnection" x:Key="in_DBConnection">[in_DBConnection]</InArgument>
