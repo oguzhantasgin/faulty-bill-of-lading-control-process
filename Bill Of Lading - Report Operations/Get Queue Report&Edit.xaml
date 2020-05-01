@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1004,604</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1004,2178</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetQueueReport_Edit_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="44">
@@ -59,10 +59,14 @@
       <AssemblyReference>UiPath.CV</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Get Queue Report&amp;Move OneDrive" sap:VirtualizedContainerService.HintSize="242,416" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <sap:WorkflowViewStateService.ViewState>
+    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+      <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
+    </scg:Dictionary>
+  </sap:WorkflowViewStateService.ViewState>
+  <Sequence DisplayName="Get Queue Report&amp;Move OneDrive" sap:VirtualizedContainerService.HintSize="552,2073" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="windowsUserName" />
       <Variable x:TypeArguments="sd:DataTable" Name="LadingQueueDT" />
@@ -70,9 +74,10 @@
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Queue Page" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="8a8ccf3e69c9aabf0762b9d051b05ec7" Selector="&lt;html app='chrome.exe' title='Transactions - UiPath Orchestrator' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Queue Page" sap:VirtualizedContainerService.HintSize="510,384" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="8a8ccf3e69c9aabf0762b9d051b05ec7" Selector="&lt;html app='chrome.exe' title='Transactions - UiPath Orchestrator' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -82,9 +87,10 @@
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Download Button" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="True">
+            <ui:Click AlterIfDisabled="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="100" DelayMS="3000" DisplayName="Click Download Button" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="True">
               <ui:Click.CursorPosition>
                 <ui:CursorPosition Position="Center">
                   <ui:CursorPosition.OffsetX>
@@ -102,18 +108,23 @@
                   </ui:Target.TimeoutMS>
                 </ui:Target>
               </ui:Click.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:Click>
           </Sequence>
         </ActivityAction>
       </ui:BrowserScope.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:BrowserScope>
-    <ui:GetEnvironmentVariable DisplayName="Get Windows Username" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="GetEnvironmentVariable_1" Variable="UserName" VariableValue="[windowsUserName]">
+    <ui:GetEnvironmentVariable DisplayName="Get Windows Username" sap:VirtualizedContainerService.HintSize="510,51" sap2010:WorkflowViewState.IdRef="GetEnvironmentVariable_1" Variable="UserName" VariableValue="[windowsUserName]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -121,27 +132,33 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:GetEnvironmentVariable>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Queue Report Excel Application" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" WorkbookPath="[&quot;C:\Users\&quot;+windowsUserName+&quot;\Downloads\LadingQueue-items.csv&quot;]">
+    <ui:ExcelApplicationScope Password="{x:Null}" CreateNewFile="False" DisplayName="Queue Report CSV Application Scope" sap:VirtualizedContainerService.HintSize="510,51" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" Visible="False" WorkbookPath="[&quot;C:\Users\&quot;+windowsUserName+&quot;\Downloads\LadingQueue-items.csv&quot;]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence sap:VirtualizedContainerService.HintSize="476,341" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Get Records as Data Table" sap:VirtualizedContainerService.HintSize="242,234" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelReadRange AddHeaders="True" DataTable="[LadingQueueDT]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="LadingQueue-items">
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[LadingQueueDT]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="LadingQueue-items">
               <ui:ExcelReadRange.Range>
                 <InArgument x:TypeArguments="x:String">
                   <Literal x:TypeArguments="x:String" Value="" />
                 </InArgument>
               </ui:ExcelReadRange.Range>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:ExcelReadRange>
-            <ui:FilterDataTable DataTable="[LadingQueueDT]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[LadingQueueDT]" SelectColumnsMode="Keep">
+            <ui:FilterDataTable DataTable="[LadingQueueDT]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[LadingQueueDT]" SelectColumnsMode="Keep">
               <ui:FilterDataTable.Filters>
                 <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
                   <ui:FilterOperationArgument Column="{x:Null}" Operand="{x:Null}" BooleanOperator="And" Operator="LT" />
@@ -156,59 +173,47 @@
                 </scg:List>
               </ui:FilterDataTable.SelectColumns>
             </ui:FilterDataTable>
-            <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Excel" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="c00be21313f4aa29dae29cbb3b003bfe" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='LadingQueue*' /&gt;">
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ExcelApplicationScope>
+    <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete CSV File" sap:VirtualizedContainerService.HintSize="510,22" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[&quot;C:\Users\&quot;+windowsUserName+&quot;\Downloads\LadingQueue-items.csv&quot;]" />
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Queue Report Excel Application Excel" sap:VirtualizedContainerService.HintSize="510,1116" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" WorkbookPath="[&quot;C:\Users\&quot;+windowsUserName+&quot;\Downloads\LadingQueue-items.xlsx&quot;]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,967" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Excel" sap:VirtualizedContainerService.HintSize="434,875" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="c00be21313f4aa29dae29cbb3b003bfe" Selector="&lt;wnd app='excel.exe' cls='XLMAIN' title='LadingQueue*' /&gt;">
               <ui:WindowScope.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="242,689" sap2010:WorkflowViewState.IdRef="Sequence_5">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SpecialKey="{x:Null}" Activate="True" DisplayName="Send Hotkey" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="SendHotkey_4" Key="*" KeyModifiers="Ctrl">
-                      <ui:SendHotkey.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="588abcfe-c87b-4f1c-9eda-6faf3255e9a6">
-                          <ui:Target.TimeoutMS>
-                            <InArgument x:TypeArguments="x:Int32" />
-                          </ui:Target.TimeoutMS>
-                          <ui:Target.WaitForReady>
-                            <InArgument x:TypeArguments="ui:WaitForReady" />
-                          </ui:Target.WaitForReady>
-                        </ui:Target>
-                      </ui:SendHotkey.Target>
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                    </ui:SendHotkey>
-                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DisplayName="Send Delete" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="SendHotkey_3" Key="del" KeyModifiers="None" SpecialKey="True">
-                      <ui:SendHotkey.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="39e23db6-fe69-4753-9f25-22907c3dcc95">
-                          <ui:Target.TimeoutMS>
-                            <InArgument x:TypeArguments="x:Int32" />
-                          </ui:Target.TimeoutMS>
-                          <ui:Target.WaitForReady>
-                            <InArgument x:TypeArguments="ui:WaitForReady" />
-                          </ui:Target.WaitForReady>
-                        </ui:Target>
-                      </ui:SendHotkey.Target>
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                    </ui:SendHotkey>
                     <ui:ExcelWriteRange AddHeaders="True" DataTable="[LadingQueueDT]" DisplayName="Write Lading Queue Report" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="LadingQueue-items" StartingCell="A1">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
@@ -314,7 +319,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:SendHotkey>
-                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SpecialKey="{x:Null}" Activate="True" DisplayName="Send CTRL + S" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="SendHotkey_8" Key="s" KeyModifiers="Ctrl">
+                    <ui:SendHotkey ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SpecialKey="{x:Null}" Activate="True" DisplayName="Send CTRL + S" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="SendHotkey_8" Key="s" KeyModifiers="Ctrl" SendWindowMessages="False">
                       <ui:SendHotkey.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="7b337a90-b95e-406e-ab44-968710df8fed">
                           <ui:Target.TimeoutMS>
@@ -337,8 +342,8 @@
               </ui:WindowScope.Body>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:WindowScope>
@@ -347,16 +352,16 @@
       </ui:ExcelApplicationScope.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ExcelApplicationScope>
-    <ui:MoveFile ContinueOnError="{x:Null}" Destination="[&quot;C:\Users\&quot;+windowsUserName+&quot;\&quot;+in_OneDriveFolderName+&quot;\+Bill Report\Lading - &quot; + Now.ToString(&quot;dd.MM.yy hh.mm&quot;) + &quot;.csv&quot;]" DisplayName="Move Report to OneDrive" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="False" Path="[&quot;C:\Users\&quot;+windowsUserName+&quot;\Downloads\LadingQueue-items.csv&quot;]">
+    <ui:MoveFile ContinueOnError="{x:Null}" Destination="[&quot;C:\Users\&quot;+windowsUserName+&quot;\&quot;+in_OneDriveFolderName+&quot;\Bill Report\Lading - &quot; + Now.ToString(&quot;dd.MM.yy hh.mm&quot;) + &quot;.xlsx&quot;]" DisplayName="Move Report to OneDrive" sap:VirtualizedContainerService.HintSize="510,157" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="False" Path="[&quot;C:\Users\&quot;+windowsUserName+&quot;\Downloads\LadingQueue-items.xlsx&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MoveFile>
